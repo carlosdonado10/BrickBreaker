@@ -11,8 +11,26 @@ class Ball(Base):
 
         super().__init__(x1, y1, x2, y2, height=height, width=width)
         self._speed = 15
-        self._direction = math.pi/4
+        self._direction = 3* math.pi/4
         self.renderer = None
+
+    @property
+    def direction(self):
+        return self._direction
+
+    @direction.setter
+    def direction(self, pDirection):
+        delta = math.pi/30
+        if (math.pi/2) - delta > pDirection > (math.pi/2) + delta:
+            self._direction = math.pi/2 + delta
+        elif -delta > pDirection > delta:
+            self._direction = delta * abs(delta)/delta
+        elif math.pi - delta > pDirection > math.pi + delta:
+            self._direction = math.pi + delta * abs(delta) / delta
+        elif 3*(math.pi/2) - delta > pDirection > 3*(math.pi/2) + delta:
+            self._direction = 3*(math.pi/2) + delta
+        else:
+            self._direction = pDirection
 
     def increase_speed(self, increment: float):
         self._speed += increment
@@ -56,109 +74,115 @@ class Ball(Base):
 
     def check_borders(self, canvas):
         # LEFT BORDER
-        if self._x1 + self._speed * math.cos(self._direction) < 0:
-            r_ = abs(self._x1 / math.cos(self._direction))
+        if self._x1 + self._speed * math.cos(self.direction) < 0:
+            r_ = abs(self._x1 / math.cos(self.direction))
 
-            canvas.move(self.renderer, r_ * math.cos(self._direction),
-                        -r_ * math.sin(self._direction))
+            canvas.move(self.renderer, r_ * math.cos(self.direction),
+                        -r_ * math.sin(self.direction))
 
             self.update_cords(canvas.coords(self.renderer))
-            self._direction = math.pi - self._direction
+            self.direction = math.pi - self.direction
 
         #RIGHT BORDER
-        elif self._x2 + self._speed * math.cos(self._direction) > self.width * 0.8:
-            r_ = abs((self.width * 0.8 - self._x2) / math.cos(self._direction))
+        elif self._x2 + self._speed * math.cos(self.direction) > self.width * 0.8:
+            r_ = abs((self.width * 0.8 - self._x2) / math.cos(self.direction))
 
-            canvas.move(self.renderer, r_ * math.cos(self._direction),
-                        -r_ * math.sin(self._direction))
+            canvas.move(self.renderer, r_ * math.cos(self.direction),
+                        -r_ * math.sin(self.direction))
 
             self.update_cords(canvas.coords(self.renderer))
-            self._direction = math.pi - self._direction
+            self.direction = math.pi - self.direction
 
         #TOP BORDER
-        elif self._y1 - self._speed * math.sin(self._direction) < 0:
+        elif self._y1 - self._speed * math.sin(self.direction) < 0:
 
-            r_ = abs(self._y1 / math.sin(self._direction))
+            r_ = abs(self._y1 / math.sin(self.direction))
 
-            canvas.move(self.renderer, r_ * math.cos(self._direction),
-                        -r_ * math.sin(self._direction))
+            canvas.move(self.renderer, r_ * math.cos(self.direction),
+                        -r_ * math.sin(self.direction))
 
             self.update_cords(canvas.coords(self.renderer))
 
-            self._direction = - self._direction
+            self.direction = - self.direction
 
         #BOTTOM BORDER (LOSING LOGIC)
-        elif self._y2 - self._speed * math.sin(self._direction) >= self.height:
+        elif self._y2 - self._speed * math.sin(self.direction) >= self.height:
             paddle_coords = canvas.paddle.get_coords()
             if self._x1 >= paddle_coords[0] and self._x2 <= paddle_coords[2]:
-                r_ = abs((self.height - self._y2 - 4) / math.sin(self._direction))
+                r_ = abs((self.height - self._y2 - 4) / math.sin(self.direction))
 
-                canvas.move(self.renderer, r_ * math.cos(self._direction),
-                            -r_ * math.sin(self._direction))
+                canvas.move(self.renderer, r_ * math.cos(self.direction),
+                            -r_ * math.sin(self.direction))
 
                 self.update_cords(canvas.coords(self.renderer))
                 ball_center = self.get_center('x')
                 paddle_center = canvas.paddle.get_center('x')
 
                 angle_X = ball_center - paddle_center
-                angle_Origin = (- self._direction)
+                angle_Origin = (- self.direction)
                 angle_computed = math.radians(-70/(canvas.paddle.get_width()/2)*angle_X + 90)
 
-                self._direction = (1 - (abs(angle_X) / (canvas.paddle.get_width() / 2)) ** 0.25) * angle_Origin + ((abs(angle_X) / (canvas.paddle.get_width() / 2)) ** 0.25) * angle_computed
-
+                self.direction = (1 - (abs(angle_X) / (canvas.paddle.get_width() / 2)) ** 0.25) * angle_Origin + ((abs(angle_X) / (canvas.paddle.get_width() / 2)) ** 0.25) * angle_computed
+                # self.direction = angle_Origin
             else:
                 canvas.status = 1
 
         #FREE MOVEMENT (NO BORDERS)
         else:
-            canvas.move(self.renderer, self._speed * math.cos(self._direction),
-                        -self._speed * math.sin(self._direction))
+            canvas.move(self.renderer, self._speed * math.cos(self.direction),
+                        -self._speed * math.sin(self.direction))
             self.update_cords(canvas.coords(self.renderer))
 
     def move(self, canvas):
         self.update_cords(canvas.coords(self.renderer))
         next_move = self.move_candidate(self._speed)
-        collision_brick = None
+        collision_brick_list = []
+        collision_brick_coords_list = []
         if self.collides(next_move, canvas.bricks.limits):
             #Con quien me choco?
-            for step in range(1,self._speed+1):
-                if collision_brick is None:
+            for step in range(1, self._speed+1):
+                if not collision_brick_list:
                     for key, brick in canvas.bricks.brick_dict.items():
 
                         brick_coords = brick.get_coord_dict()
-                        print(self.collides(self.move_candidate(step), brick_coords))
+                        # print(self.collides(self.move_candidate(step), brick_coords))
                         if self.collides(self.move_candidate(step), brick_coords):
-                            collision_brick = brick
-                            collision_brick_coords = brick_coords
+                            collision_brick_list.append(brick)
+                            collision_brick_coords_list.append(brick_coords)
 
-            if collision_brick is None:
+            if not collision_brick_list:
                 self.check_borders(canvas)
             else:
-                profiles = [
-                    ['x1', collision_brick_coords['x1'], collision_brick_coords['y1'], collision_brick_coords['y2'], 'x2'],
-                    ['x2', collision_brick_coords['x2'], collision_brick_coords['y1'], collision_brick_coords['y2'], 'x1'],
-                    ['y1', collision_brick_coords['y1'], collision_brick_coords['x1'], collision_brick_coords['x2'], 'y2'],
-                    ['y2', collision_brick_coords['y2'], collision_brick_coords['x1'], collision_brick_coords['x2'], 'y1']
-                ]
+                for idx, collision_brick in enumerate(collision_brick_list):
+                    collision_brick_coords = collision_brick_coords_list[idx]
+                    ls = []
+                    profiles = [
+                        ['x1', collision_brick_coords['x1'], collision_brick_coords['y1'], collision_brick_coords['y2'], 'x2'],
+                        ['x2', collision_brick_coords['x2'], collision_brick_coords['y1'], collision_brick_coords['y2'], 'x1'],
+                        ['y1', collision_brick_coords['y1'], collision_brick_coords['x1'], collision_brick_coords['x2'], 'y2'],
+                        ['y2', collision_brick_coords['y2'], collision_brick_coords['x1'], collision_brick_coords['x2'], 'y1']
+                    ]
 
                 ball_coords = self.get_coord_dict()
-                ls = []
+
                 for idx, ar in enumerate(profiles):
                     if idx <= 1:
                         l = (ar[1] - ball_coords[ar[4]])/math.cos(self._direction)
-                        if ar[2] <= ball_coords['y' + ar[0][1]] + l*math.sin(self._direction) <= ar[3] and l > 0:
+                        adjustment = -5 if ar[0][1] == '2' else 5
+                        if (ar[2] <= ball_coords['y1'] - l*math.sin(self._direction) <= ar[3] or ar[2] <= ball_coords['y2'] - l*math.sin(self._direction) <= ar[3]) and l > 0:
                             ls.append(l)
                         else:
                             ls.append(1e9)
                     else:
                         l = -(ar[1] - ball_coords[ar[4]])/math.sin(self._direction)
-                        if ar[2] <= ball_coords['x' + ar[0][1]] + l*math.cos(self._direction) <= ar[3] and l > 0:
+                        if (ar[2] <= ball_coords['x1'] + l*math.cos(self._direction) <= ar[3] or ar[2] <= ball_coords['x2'] + l*math.cos(self._direction) <= ar[3]) and l > 0:
                             ls.append(l)
                         else:
                             ls.append(1e9)
 
 
-                profile = ls.index(min(ls))
+                profile = ls.index(min(ls)) % 4
+                brick = collision_brick_list[ls.index(min(ls)) // 4]
                 l = min(ls)
 
                 if l == 1e9:
@@ -168,11 +192,11 @@ class Ball(Base):
                     self.update_cords(canvas.coords(self.renderer))
 
 
-                    canvas.remove_brick(collision_brick)
+                    canvas.remove_brick(brick)
 
                     if profiles[profile][0][0] == 'x':
-                        self._direction = math.pi - self._direction
+                        self.direction = math.pi - self.direction
                     else:
-                        self._direction = -self._direction
+                        self.direction = -self.direction
         else:
             self.check_borders(canvas)

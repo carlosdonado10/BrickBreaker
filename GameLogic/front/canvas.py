@@ -50,6 +50,8 @@ class Canvas(tk.Canvas):
         time.sleep(1/60)
         self.ball.move(self)
         self.paddle.move(self)
+        if self.bricks.brick_dict == {}:
+            self.status = 2
 
         self.move_left, self.move_right = False, False
         if self.status == 0:
