@@ -60,23 +60,3 @@ class Canvas(tk.Canvas):
           # TODO:Ancho de la barra en variable
 
 
-def move_right(event):
-    global brick_breaker
-    print('moved right')
-    brick_breaker.move_right = True
-
-
-def move_left(event):
-    global brick_breaker
-    print('moved left')
-    brick_breaker.move_left = True
-
-
-if __name__ == '__main__':
-    m = tk.Tk()
-    m.bind("<Left>", move_left)
-    m.bind("<Right>", move_right)
-    # canvas=tk.Canvas(master=m, height=100, width=100)
-    # canvas.create_oval(90, 90, 110, 110, width=0, fill="ivory3")
-    brick_breaker = Canvas(m)
-    tk.mainloop()

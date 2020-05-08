@@ -2,10 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7b78a87c-44e2-42bc-951b-e81ce8b92728" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/brickbreaker.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/brickbreaker.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GameLogic/classes/ball.py" beforeDir="false" afterPath="$PROJECT_DIR$/GameLogic/classes/ball.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GameLogic/front/canvas.py" beforeDir="false" afterPath="$PROJECT_DIR$/GameLogic/front/canvas.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,7 +41,7 @@
       <recent name="C:\Users\cfdon\OneDrive\Documents\projects\brickbreaker\GameLogic" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.canvas">
+  <component name="RunManager" selected="Python.main">
     <configuration name="ball" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="brickbreaker" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -111,9 +110,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.main" />
         <item itemvalue="Python.canvas" />
         <item itemvalue="Python.ball" />
-        <item itemvalue="Python.main" />
       </list>
     </recent_temporary>
   </component>
@@ -131,7 +130,7 @@
       <workItem from="1588783511811" duration="19297000" />
       <workItem from="1588875594280" duration="2550000" />
       <workItem from="1588883673188" duration="109000" />
-      <workItem from="1588883809490" duration="5821000" />
+      <workItem from="1588883809490" duration="6873000" />
     </task>
     <servers />
   </component>
@@ -147,29 +146,29 @@
       <screen x="2736" y="0" width="1920" height="1040" />
     </state>
     <state x="3476" y="261" key="FileChooserDialogImpl/0.0.1368.872/2736.0.1920.1040@2736.0.1920.1040" timestamp="1588885201715" />
-    <state width="1877" height="183" key="GridCell.Tab.0.bottom" timestamp="1588890310068">
-      <screen x="2736" y="0" width="1920" height="1040" />
+    <state width="1326" height="145" key="GridCell.Tab.0.bottom" timestamp="1588956051471">
+      <screen x="0" y="0" width="1368" height="872" />
     </state>
-    <state width="1326" height="347" key="GridCell.Tab.0.bottom/0.0.1368.872/2736.0.1920.1040@0.0.1368.872" timestamp="1588733444153" />
-    <state width="1877" height="183" key="GridCell.Tab.0.bottom/0.0.1368.872/2736.0.1920.1040@2736.0.1920.1040" timestamp="1588890310068" />
+    <state width="1326" height="145" key="GridCell.Tab.0.bottom/0.0.1368.872/2736.0.1920.1040@0.0.1368.872" timestamp="1588956051471" />
+    <state width="1877" height="183" key="GridCell.Tab.0.bottom/0.0.1368.872/2736.0.1920.1040@2736.0.1920.1040" timestamp="1588890388658" />
     <state width="1326" height="227" key="GridCell.Tab.0.bottom/0.0.1368.872@0.0.1368.872" timestamp="1588712861751" />
-    <state width="1877" height="183" key="GridCell.Tab.0.center" timestamp="1588890310068">
-      <screen x="2736" y="0" width="1920" height="1040" />
+    <state width="1326" height="145" key="GridCell.Tab.0.center" timestamp="1588956051470">
+      <screen x="0" y="0" width="1368" height="872" />
     </state>
-    <state width="1326" height="347" key="GridCell.Tab.0.center/0.0.1368.872/2736.0.1920.1040@0.0.1368.872" timestamp="1588733444153" />
-    <state width="1877" height="183" key="GridCell.Tab.0.center/0.0.1368.872/2736.0.1920.1040@2736.0.1920.1040" timestamp="1588890310068" />
+    <state width="1326" height="145" key="GridCell.Tab.0.center/0.0.1368.872/2736.0.1920.1040@0.0.1368.872" timestamp="1588956051470" />
+    <state width="1877" height="183" key="GridCell.Tab.0.center/0.0.1368.872/2736.0.1920.1040@2736.0.1920.1040" timestamp="1588890388657" />
     <state width="1326" height="227" key="GridCell.Tab.0.center/0.0.1368.872@0.0.1368.872" timestamp="1588712861751" />
-    <state width="1877" height="183" key="GridCell.Tab.0.left" timestamp="1588890310067">
-      <screen x="2736" y="0" width="1920" height="1040" />
+    <state width="1326" height="145" key="GridCell.Tab.0.left" timestamp="1588956051468">
+      <screen x="0" y="0" width="1368" height="872" />
     </state>
-    <state width="1326" height="347" key="GridCell.Tab.0.left/0.0.1368.872/2736.0.1920.1040@0.0.1368.872" timestamp="1588733444153" />
-    <state width="1877" height="183" key="GridCell.Tab.0.left/0.0.1368.872/2736.0.1920.1040@2736.0.1920.1040" timestamp="1588890310067" />
+    <state width="1326" height="145" key="GridCell.Tab.0.left/0.0.1368.872/2736.0.1920.1040@0.0.1368.872" timestamp="1588956051468" />
+    <state width="1877" height="183" key="GridCell.Tab.0.left/0.0.1368.872/2736.0.1920.1040@2736.0.1920.1040" timestamp="1588890388657" />
     <state width="1326" height="227" key="GridCell.Tab.0.left/0.0.1368.872@0.0.1368.872" timestamp="1588712861751" />
-    <state width="1877" height="183" key="GridCell.Tab.0.right" timestamp="1588890310068">
-      <screen x="2736" y="0" width="1920" height="1040" />
+    <state width="1326" height="145" key="GridCell.Tab.0.right" timestamp="1588956051470">
+      <screen x="0" y="0" width="1368" height="872" />
     </state>
-    <state width="1326" height="347" key="GridCell.Tab.0.right/0.0.1368.872/2736.0.1920.1040@0.0.1368.872" timestamp="1588733444153" />
-    <state width="1877" height="183" key="GridCell.Tab.0.right/0.0.1368.872/2736.0.1920.1040@2736.0.1920.1040" timestamp="1588890310068" />
+    <state width="1326" height="145" key="GridCell.Tab.0.right/0.0.1368.872/2736.0.1920.1040@0.0.1368.872" timestamp="1588956051470" />
+    <state width="1877" height="183" key="GridCell.Tab.0.right/0.0.1368.872/2736.0.1920.1040@2736.0.1920.1040" timestamp="1588890388658" />
     <state width="1326" height="227" key="GridCell.Tab.0.right/0.0.1368.872@0.0.1368.872" timestamp="1588712861751" />
     <state width="1877" height="405" key="GridCell.Tab.1.bottom" timestamp="1588890032861">
       <screen x="2736" y="0" width="1920" height="1040" />
@@ -226,7 +225,8 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/brickbreaker$ball.coverage" NAME="ball Coverage Results" MODIFIED="1588694939782" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/GameLogic/classes" />
-    <SUITE FILE_PATH="coverage/BrickBreaker$canvas.coverage" NAME="canvas Coverage Results" MODIFIED="1588890310056" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/GameLogic/front" />
+    <SUITE FILE_PATH="coverage/BrickBreaker$main.coverage" NAME="main Coverage Results" MODIFIED="1588956051433" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/BrickBreaker$canvas.coverage" NAME="canvas Coverage Results" MODIFIED="1588890644103" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/GameLogic/front" />
     <SUITE FILE_PATH="coverage/brickbreaker$main.coverage" NAME="main Coverage Results" MODIFIED="1588649025333" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/brickbreaker$canvas.coverage" NAME="canvas Coverage Results" MODIFIED="1588882512888" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/GameLogic/front" />
   </component>
